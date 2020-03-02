@@ -74,7 +74,7 @@
 		<div class="word-wrapper">
 			{#each foundWords as word}
 				<p id={word} class="word">{word}</p>
-				{/each}
+			{/each}
 		</div>
 	{/if}
 </main>
@@ -151,6 +151,8 @@
 
 	.word {
 		cursor: pointer;
+		user-select: none;
+		-moz-user-select: none;
 	}
 
 	.word:hover {
@@ -256,7 +258,7 @@
 	  top: 56px;
 	  left: 12px;
 	}
-	
+
 	@keyframes lds-roller {
 	  0% {
 	    transform: rotate(0deg);
