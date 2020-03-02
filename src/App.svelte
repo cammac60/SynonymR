@@ -48,6 +48,7 @@
 	}
 
 	input {
+		outline: none;
 		width: 60%;
 	}
 
@@ -57,6 +58,11 @@
 		margin-right: auto;
 		text-align: left;
 		width: 30%;
+	}
+
+	button:active {
+		color: #FFFFFF;
+		background: rgba(0,67,68,1);
 	}
 
 </style>
