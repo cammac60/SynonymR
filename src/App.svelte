@@ -2,9 +2,10 @@
 
 	document.title = 'SynonymR';
 
-	let error;
+	let errorMsg;
 	let curWord;
 	let foundWords = [];
+	let loading = false;
 
 	const fetchSyns = async () => {
 		const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${curWord}?key=3d79f969-d355-4060-9017-28021b58745e`;
@@ -16,12 +17,34 @@
 		return data;
 	};
 
-	const handleSubmit = async () => {
+	const handleSubmit = () => {
+		if (validateSubmit()) {
+			errorMsg = validateSubmit();
+		} else {
+				errorMsg = '';
+				grabSyns();
+		}
+	};
+
+	const validateSubmit = () => {
+		if (!curWord) {
+			return 'Please enter a word.';
+		} else {
+				return false;
+		}
+	};
+
+	const grabSyns = async () => {
+		loading = true;
 		try {
-			const syns = await fetchSyns();
-			console.log(syns);
+			const response = await fetchSyns();
+			const items = response[0].meta.syns[0];
+			foundWords = items;
+			loading = false;
+			console.log(foundWords);
 		} catch(error) {
-			console.log(error);
+				errorMsg = 'There was a problem getting your synonyms. Please try again.'
+				console.log(error);
 		}
 	};
 
@@ -31,10 +54,10 @@
 
 	<h1>SynonymR</h1>
 	<div class="form">
-		<input type="text" placeholder="Enter a word" bind:value={curWord}>
-		<button on:click={handleSubmit}>Find Synonyms</button>
+		<input type="text" placeholder="Enter a word" bind:value={curWord}/>
+		<button on:click={handleSubmit} disabled={loading}>Find Synonyms</button>
 	</div>
-	<p class="error">{error || ''}</p>
+	<p class="error">{errorMsg || ''}</p>
 	<div class="word-wrapper">
 
 	</div>
