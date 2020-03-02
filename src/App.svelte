@@ -43,7 +43,8 @@
 			loading = false;
 			console.log(foundWords);
 		} catch(error) {
-				errorMsg = 'There was a problem getting your synonyms. Please try again.'
+				loading = false;
+				errorMsg = 'There was a problem getting your synonyms. Please try again.';
 				console.log(error);
 		}
 	};
@@ -59,7 +60,9 @@
 	</div>
 	<p class="error">{errorMsg || ''}</p>
 	<div class="word-wrapper">
-
+		{#each foundWords as word}
+			<p id={word} class="word">{word}</p>
+		{/each}
 	</div>
 
 </main>
