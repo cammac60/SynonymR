@@ -7,11 +7,19 @@
 </main>
 
 <style>
-	main {
+	:global(body) {
+		box-sizing: border-box;
+		margin: 0;
+		outline: none;
+		padding: 0;
 		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+	}
+
+	main {
+		background: rgb(29,98,158);
+		background: radial-gradient(circle, rgba(29,98,158,1) 0%, rgba(0,0,0,1) 100%);
+		height: 100vh;
+		width: 100%;
 	}
 
 	h1 {
@@ -19,11 +27,7 @@
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
+		margin: 0;
 	}
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>
