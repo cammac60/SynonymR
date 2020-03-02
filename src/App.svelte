@@ -1,20 +1,44 @@
 <script>
+
 	document.title = 'SynonymR';
+
 	let error;
 	let curWord;
 	let foundWords = [];
+
+	const fetchSyns = async () => {
+		const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${curWord}?key=3d79f969-d355-4060-9017-28021b58745e`;
+		const response = await fetch(url);
+		if (!response.ok) {
+			throw new Error('Error: The synonyms couldn\'t be found.')
+		}
+		const data = await response.json();
+		return data;
+	};
+
+	const handleSubmit = async () => {
+		try {
+			const syns = await fetchSyns();
+			console.log(syns);
+		} catch(error) {
+			console.log(error);
+		}
+	};
+
 </script>
 
 <main>
+
 	<h1>SynonymR</h1>
 	<div class="form">
 		<input type="text" placeholder="Enter a word" bind:value={curWord}>
-		<button>Find Synonyms</button>
+		<button on:click={handleSubmit}>Find Synonyms</button>
 	</div>
 	<p class="error">{error || ''}</p>
 	<div class="word-wrapper">
 
 	</div>
+
 </main>
 
 <style>
