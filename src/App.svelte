@@ -40,13 +40,19 @@
 			const response = await fetchSyns();
 			const items = response[0].meta.syns[0];
 			foundWords = items;
-			loading = false;
 			console.log(foundWords);
+			loading = false;
 		} catch(error) {
 				loading = false;
 				errorMsg = 'There was a problem getting your synonyms. Please try again.';
 				console.log(error);
 		}
+	};
+
+	const handleClick = ({ target }) => {
+		const { id } = target;
+		curWord = id;
+		grabSyns();
 	};
 
 </script>
@@ -73,7 +79,7 @@
 	{:else}
 		<div class="word-wrapper">
 			{#each foundWords as word}
-				<p id={word} class="word">{word}</p>
+				<p id={word} class="word" on:click={e => handleClick(e)}>{word}</p>
 			{/each}
 		</div>
 	{/if}
