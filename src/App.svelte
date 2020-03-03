@@ -40,9 +40,9 @@
 			const response = await fetchSyns();
 			const items = response[0].meta.syns[0];
 			foundWords = items;
-			console.log(foundWords);
 			loading = false;
 		} catch(error) {
+				foundWords = [];
 				loading = false;
 				errorMsg = 'There was a problem getting your synonyms. Please try again.';
 				console.log(error);
@@ -55,13 +55,18 @@
 		grabSyns();
 	};
 
+	const handleChange = () => {
+		console.log('change');
+		errorMsg = '';
+	};
+
 </script>
 
 <main>
 
 	<h1>SynonymR</h1>
 	<div class="form">
-		<input type="text" placeholder="Enter a word" bind:value={curWord}/>
+		<input type="text" placeholder="Enter a word" bind:value={curWord} on:change={handleChange}/>
 		<button on:click={handleSubmit} disabled={loading}>Find Synonyms</button>
 	</div>
 	<p class="error">{errorMsg || ''}</p>
