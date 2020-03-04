@@ -1,5 +1,7 @@
 <script>
 
+	import { fly, fade } from 'svelte/transition';
+
 	document.title = 'SynonymR';
 
 	let errorMsg;
@@ -84,7 +86,7 @@
 	{:else}
 		<div class="word-wrapper">
 			{#each foundWords as word}
-				<p id={word} class="word" on:click={e => handleClick(e)}>{word}</p>
+				<p id={word} class="word" on:click={e => handleClick(e)} in:fly="{{ y: 200, duration: 2000 }}">{word}</p>
 			{/each}
 		</div>
 	{/if}
