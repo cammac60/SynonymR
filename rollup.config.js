@@ -1,5 +1,6 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
@@ -15,6 +16,14 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		replace({
+			API_KEY: '3d79f969-d355-4060-9017-28021b58745e',
+			process: JSON.stringify({
+		        env: {
+		          isProd: production,
+		        }
+		  })
+		}),
 		svelte({
 			// enable run-time checks when not in production
 			dev: !production,

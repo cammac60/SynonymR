@@ -8,9 +8,10 @@
 	let curWord;
 	let foundWords = [];
 	let loading = false;
+	const key = "API_KEY";
 
 	const fetchSyns = async () => {
-		const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${curWord}?key=3d79f969-d355-4060-9017-28021b58745e`;
+		const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${curWord}?key=${key}`;
 		const response = await fetch(url);
 		if (!response.ok) {
 			throw new Error('Error: The synonyms couldn\'t be found.')
