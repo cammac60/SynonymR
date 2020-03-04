@@ -120,6 +120,7 @@
 
 	.form {
 		display: flex;
+		height: 50px;
 		justify-content: space-between;
 		margin-left: auto;
 		margin-right: auto;
@@ -141,7 +142,9 @@
 	}
 
 	button {
+		background-color: #7CFCFC;
 		cursor: pointer;
+		width: 30%;
 	}
 
 	button:active {
