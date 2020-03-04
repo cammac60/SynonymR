@@ -1,6 +1,6 @@
 <script>
 
-	import { fly, fade } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 
 	document.title = 'SynonymR';
 
@@ -58,7 +58,6 @@
 	};
 
 	const handleChange = () => {
-		console.log('change');
 		errorMsg = '';
 	};
 
@@ -68,7 +67,7 @@
 
 	<h1>SynonymR</h1>
 	<div class="form">
-		<input type="text" placeholder="Enter a word" bind:value={curWord} on:change={handleChange}/>
+		<input type="text" placeholder="Enter a word" bind:value={curWord} on:keyup={handleChange}/>
 		<button on:click={handleSubmit} disabled={loading}>Find Synonyms</button>
 	</div>
 	<p class="error">{errorMsg || ''}</p>
@@ -93,6 +92,7 @@
 </main>
 
 <style>
+
 	:global(body) {
 		box-sizing: border-box;
 		margin: 0;
