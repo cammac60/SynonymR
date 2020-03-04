@@ -4,7 +4,7 @@
 
 	document.title = 'SynonymR';
 
-	let errorMsg;
+	let errorMsg = '';
 	let curWord;
 	let foundWords = [];
 	let loading = false;
@@ -70,7 +70,7 @@
 		<input type="text" placeholder="Enter a word" bind:value={curWord} on:keyup={handleChange}/>
 		<button on:click={handleSubmit} disabled={loading}>Find Synonyms</button>
 	</div>
-	<p class="error">{errorMsg || ''}</p>
+	<p class="error">{errorMsg}</p>
 	{#if loading}
 		<div class="lds-roller">
 			<div></div>
