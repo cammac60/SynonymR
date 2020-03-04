@@ -11,6 +11,8 @@
 
 After navigating to the live site, simply enter a word and recieve back it's synonyms. 
 
+<img width="1440" alt="Screen Shot 2020-03-04 at 11 07 06 AM" src="https://user-images.githubusercontent.com/47998896/75909419-501cc200-5e09-11ea-83c3-ca60321344b7.png">
+
 Once some synonyms populate you can click on one of the rendered words to find synonyms for _that_ word. 
 
 ### Dev Setup
