@@ -40,7 +40,7 @@
 		loading = true;
 		try {
 			const response = await fetchSyns();
-			const items = response[0].meta.syns[0];
+			const items = response[0].meta.syns.flat();
 			foundWords = items;
 			loading = false;
 		} catch(error) {
